@@ -24,8 +24,20 @@ Route::get('/home', function () {
 });
 
 Route::post('/postform', [Home::class, 'postform']);
+
+use App\Http\Controllers\CadastroController;
+
+Route::get('/cadastro', [CadastroController::class, 'mostrarFormulario'])->name('cadastro.form');
+Route::post('/cadastro', [CadastroController::class, 'salvarCadastro'])->name('cadastro.salvar');
+
+Route::post('/usuario', [UsuarioController::class, 'store'])->name('usuario.store');
+
+Route::post('/usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
+
 // Cadastro
 Route::post('/usuarios', [UsuarioController::class, 'store']);
+
+Route::resource('usuarios', UsuarioController::class);
 
 // Edição
 Route::put('/usuarios/{id}', [UsuarioController::class, 'update']);

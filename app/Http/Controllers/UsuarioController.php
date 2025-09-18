@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class UsuarioController extends Controller
 {
@@ -14,10 +15,16 @@ class UsuarioController extends Controller
             'nome' => 'required|string|max:255',
             'telefone' => 'required|string|max:20',
             'cpf' => 'required|string|max:14',
-            'data_nascimento' => 'required|date',
+            'data_nascimento' => 'required|string', // string, pois vem no formato DD/MM/YYYY
         ]);
 
-        Usuario::create($request->all());
+        $data = $request->all();
+
+        // Converte data para MySQL (YYYY-MM-DD)
+        $data['data_nascimento'] = Carbon::createFromFormat('d/m/Y', $request->data_nascimento)
+                                        ->format('Y-m-d');
+
+        Usuario::create($data);
 
         return redirect()->back()->with('success', 'Cadastro realizado!');
     }
@@ -31,10 +38,14 @@ class UsuarioController extends Controller
             'nome' => 'required|string|max:255',
             'telefone' => 'required|string|max:20',
             'cpf' => 'required|string|max:14',
-            'data_nascimento' => 'required|date',
+            'data_nascimento' => 'required|string',
         ]);
 
-        $usuario->update($request->all());
+        $data = $request->all();
+        $data['data_nascimento'] = Carbon::createFromFormat('d/m/Y', $request->data_nascimento)
+                                        ->format('Y-m-d');
+
+        $usuario->update($data);
 
         return redirect()->back()->with('success', 'Usuário atualizado!');
     }
