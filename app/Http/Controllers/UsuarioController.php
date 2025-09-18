@@ -2,25 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
-use App\Models\Usuario; // Ou App\Models\User dependendo do nome do seu modelo
 
 class UsuarioController extends Controller
 {
+    // Cadastro
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nome' => 'required|string|min:3',
-            'email' => 'required|email|unique:usuarios,email',
-            'senha' => 'required|string|min:6',
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'telefone' => 'required|string|max:20',
+            'cpf' => 'required|string|max:14',
+            'data_nascimento' => 'required|date',
         ]);
 
-        $usuario = new Usuario(); // ou new User() dependendo do modelo
-        $usuario->nome = $validated['nome'];
-        $usuario->email = $validated['email'];
-        $usuario->senha = bcrypt($validated['senha']);
-        $usuario->save();
+        Usuario::create($request->all());
 
-        return response()->json(['mensagem' => 'Usuário cadastrado com sucesso!']);
+        return redirect()->back()->with('success', 'Cadastro realizado!');
+    }
+
+    // Edição
+    public function update(Request $request, $id)
+    {
+        $usuario = Usuario::findOrFail($id);
+
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'telefone' => 'required|string|max:20',
+            'cpf' => 'required|string|max:14',
+            'data_nascimento' => 'required|date',
+        ]);
+
+        $usuario->update($request->all());
+
+        return redirect()->back()->with('success', 'Usuário atualizado!');
+    }
+
+    // Login (exemplo simples pelo CPF)
+    public function login(Request $request)
+    {
+        $usuario = Usuario::where('cpf', $request->cpf)->first();
+        if ($usuario) {
+            // Aqui você poderia iniciar sessão
+            return redirect()->back()->with('success', 'Login realizado!');
+        }
+        return redirect()->back()->with('error', 'Usuário não encontrado!');
     }
 }

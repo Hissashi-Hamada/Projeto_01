@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Home;
-use App\Http\Controllers\CadastroControler;
 use App\Http\Controllers\UsuarioController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +24,11 @@ Route::get('/home', function () {
 });
 
 Route::post('/postform', [Home::class, 'postform']);
+// Cadastro
+Route::post('/usuarios', [UsuarioController::class, 'store']);
 
-use App\Http\Controllers\CadastroController;
+// Edição
+Route::put('/usuarios/{id}', [UsuarioController::class, 'update']);
 
-Route::get('/cadastro', [CadastroController::class, 'mostrarFormulario'])->name('cadastro.form');
-Route::post('/cadastro', [CadastroController::class, 'salvarCadastro'])->name('cadastro.salvar');
-
-Route::post('/usuario', [UsuarioController::class, 'store'])->name('usuario.store');
-
-
+// Login
+Route::post('/login', [UsuarioController::class, 'login']);
