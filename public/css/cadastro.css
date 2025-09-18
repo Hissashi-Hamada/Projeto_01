@@ -1,0 +1,71 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../images/bela-arquitetura-edificio-cidade-taipei.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    padding: 1rem;
+}
+
+.card-register {
+    width: 100%;
+    max-width: 560px;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(16,24,40,0.08);
+}
+
+.card-header {
+    background: #572802d7;
+    color: white;
+    padding: 1.25rem 1.5rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.15rem rgba(13,110,253,0.12);
+}
+
+    .btn-Primary {
+        width: 100%;
+      background-color: #dab291d7; /* marrom */
+      color: rgb(0, 0, 0); /* cor do texto */
+       border: black 2px solid; /* bordar */
+    }
+
+.btn-Primary:hover {
+    width: 100%;
+    background-color: #572802d7;
+    color: rgb(255, 255, 255); /* cor do texto */
+    border: black 2px solid;
+}
+
+.password-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.strength-bar {
+    height: 8px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #e9ecef;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: width 220ms ease;
+}
+
+.suggestions {
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.alert-area {
+    min-height: 58px;
+}

@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.card-login {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-login .card-header {
+    background: #0d6efd;
+    color: #fff;
+    border-bottom: none;
+    text-align: center;
+    border-radius: 12px 12px 0 0;
+}
