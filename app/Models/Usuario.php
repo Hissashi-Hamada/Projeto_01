@@ -9,6 +9,13 @@ class Usuario extends Model
 {
     use HasFactory;
 
-    protected $table = 'banco_de_dados'; // nova tabela
-    protected $fillable = ['nome', 'telefone', 'cpf', 'data_nascimento'];
+    protected $table = 'banco_de_dados';
+
+    protected $fillable = [
+        'nome', 'telefone', 'cpf', 'data_nascimento', 'senha', 'api_token'
+    ];
+
+    protected $hidden = [
+        'senha', 'api_token'
+    ];
 }
