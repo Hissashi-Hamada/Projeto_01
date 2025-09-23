@@ -6,7 +6,7 @@
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^5.0.2",
-        "axios": "^1.1.2",
+        "axios": "^1.12.2",
         "laravel-vite-plugin": "^0.7.8",
         "vite": "^4.5.14"
     },

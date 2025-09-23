@@ -5,33 +5,24 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Models\User;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-
-    
+// Rota para login e registro (públicas)
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware('auth.api')->group(function () {
+// Rotas protegidas com Sanctum (usuário precisa estar autenticado)
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::put('/user', [AuthController::class, 'update']);
-});
 
-Route::get('/api/usuarios', function () {
-    return User::all();
-});
-
+    // Exemplo: listar todos os usuários (só para logados)
+    Route::get('/usuarios', function () {
+        return User::all();
+    });
 });
