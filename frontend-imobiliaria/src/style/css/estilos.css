@@ -3,7 +3,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../images/bela-arquitetura-edificio-cidade-taipei.jpg');
+    background-image: url('/images/bela-arquitetura-edificio-cidade-taipei.jpg');
     background-position: center;
     background-repeat: no-repeat;
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
