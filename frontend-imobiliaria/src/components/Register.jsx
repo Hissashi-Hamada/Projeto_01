@@ -1,66 +1,89 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { togglePasswordVisibility, evaluatePassword } from '../utils/passwordUtils';
 import { maskDate, maskCPF, maskPhone } from '../utils/masks';
+import '../styles/estilos.css';
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    name:'', email:'', password:'', password_confirmation:'',
-    nascimento:'', cpf:'', telefone:''
-  });
-  const [showPassword, setShowPassword] = useState(false);
-  const [strength, setStrength] = useState({score:0,label:'—',percent:0});
+  useEffect(() => {
+    const inputPassword = document.getElementById('inputPassword');
+    const inputConfirmPassword = document.getElementById('inputConfirmPassword');
+    const togglePasswordBtn = document.getElementById('togglePassword');
+    const inputNascimento = document.getElementById('inputNascimento');
+    const inputCPF = document.getElementById('inputCPF');
+    const inputTelefone = document.getElementById('inputTelefone');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    let val = value;
-    if(name==='cpf') val = maskCPF(value);
-    if(name==='telefone') val = maskTelefone(value);
-    if(name==='nascimento') val = maskData(value);
-    setFormData({...formData, [name]: val});
-    if(name==='password') setStrength(evaluatePassword(val));
-  };
+    // Aplicar máscaras
+    maskDate(inputNascimento);
+    maskCPF(inputCPF);
+    maskPhone(inputTelefone);
+
+    // Toggle senha
+    togglePasswordVisibility(inputPassword, inputConfirmPassword, togglePasswordBtn);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(formData.password !== formData.password_confirmation){
-      alert('Senhas não coincidem!');
-      return;
-    }
-    if(strength.score<2){
+    const form = e.target;
+    const password = form.password.value;
+    const confirm = form.password_confirmation.value;
+
+    // Validação básica
+    const result = evaluatePassword(password);
+    if (result.score < 2) {
       alert('Senha muito fraca!');
       return;
     }
+    if (password !== confirm) {
+      alert('As senhas não coincidem!');
+      return;
+    }
+
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      password,
+      password_confirmation: confirm
+    };
+
     try {
-      await axios.post('http://localhost:8000/api/register', formData, {withCredentials:true});
+      await axios.post('http://localhost:8000/api/register', formData, { withCredentials: true });
       alert('Cadastro realizado com sucesso!');
-      setFormData({ name:'', email:'', password:'', password_confirmation:'', nascimento:'', cpf:'', telefone:'' });
+      form.reset();
     } catch (err) {
+      console.error(err.response?.data);
       alert('Erro ao cadastrar!');
-      console.error(err);
     }
   };
 
   return (
     <div className="container mt-5">
-      <div className="card-register p-4">
-        <h2 className="card-header">Cadastro</h2>
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="name" placeholder="Nome" className="form-control mb-3" value={formData.name} onChange={handleChange} required />
-          <input type="email" name="email" placeholder="Email" className="form-control mb-3" value={formData.email} onChange={handleChange} required />
-          <input type={showPassword ? "text" : "password"} name="password" placeholder="Senha" className="form-control mb-3" value={formData.password} onChange={handleChange} required />
-          <input type={showPassword ? "text" : "password"} name="password_confirmation" placeholder="Confirmar Senha" className="form-control mb-3" value={formData.password_confirmation} onChange={handleChange} required />
-          <button type="button" onClick={()=>setShowPassword(!showPassword)} className="btn btn-secondary mb-3">{showPassword ? 'Ocultar' : 'Mostrar'} Senha</button>
-          <input type="text" name="nascimento" placeholder="Nascimento" className="form-control mb-3" value={formData.nascimento} onChange={handleChange} required />
-          <input type="text" name="cpf" placeholder="CPF" className="form-control mb-3" value={formData.cpf} onChange={handleChange} required />
-          <input type="text" name="telefone" placeholder="Telefone" className="form-control mb-3" value={formData.telefone} onChange={handleChange} required />
-          <div className="strength-bar mb-2">
-            <div className="strength-fill" style={{width: `${strength.percent}%`}}></div>
-          </div>
-          <small>Força da senha: {strength.label}</small>
-          <button type="submit" className="btn btn-Primary w-100 mt-3">Registrar</button>
-        </form>
-      </div>
+      <h2>Cadastro</h2>
+      <form onSubmit={handleSubmit} id="registerForm">
+        <div className="mb-3">
+          <input type="text" name="name" className="form-control" placeholder="Nome" required />
+        </div>
+        <div className="mb-3">
+          <input type="email" name="email" className="form-control" placeholder="Email" required />
+        </div>
+        <div className="mb-3">
+          <input type="password" id="inputPassword" name="password" className="form-control" placeholder="Senha" required />
+          <span id="togglePassword" className="password-toggle">Mostrar</span>
+        </div>
+        <div className="mb-3">
+          <input type="password" id="inputConfirmPassword" name="password_confirmation" className="form-control" placeholder="Confirmar Senha" required />
+        </div>
+        <div className="mb-3">
+          <input type="text" id="inputNascimento" placeholder="Data de Nascimento" className="form-control" />
+        </div>
+        <div className="mb-3">
+          <input type="text" id="inputCPF" placeholder="CPF" className="form-control" />
+        </div>
+        <div className="mb-3">
+          <input type="text" id="inputTelefone" placeholder="Telefone" className="form-control" />
+        </div>
+        <button type="submit" className="btn btn-primary" id="submitBtn">Registrar</button>
+      </form>
     </div>
   );
 };
