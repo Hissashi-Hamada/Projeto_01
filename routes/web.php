@@ -2,45 +2,31 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Home;
+use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\UsuarioController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+// Página inicial
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', [Home::class, 'index']);
 
+// Formulário e envio
 Route::post('/postform', [Home::class, 'postform']);
 
-use App\Http\Controllers\CadastroController;
-
+// Cadastro via Web
 Route::get('/cadastro', [CadastroController::class, 'mostrarFormulario'])->name('cadastro.form');
 Route::post('/cadastro', [CadastroController::class, 'salvarCadastro'])->name('cadastro.salvar');
 
-Route::post('/usuario', [UsuarioController::class, 'store'])->name('usuario.store');
-
-Route::post('/usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
-
-// Cadastro
-Route::post('/usuarios', [UsuarioController::class, 'store']);
-
+// Usuários
 Route::resource('usuarios', UsuarioController::class);
 
-// Edição
-Route::put('/usuarios/{id}', [UsuarioController::class, 'update']);
+// Login via Web
+Route::get('/login', function() {
+    return view('login');
+})->name('login.form');
 
-// Login
-Route::post('/login', [UsuarioController::class, 'login']);
+Route::post('/login', [UsuarioController::class, 'login'])->name('login.submit');
+
+Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');

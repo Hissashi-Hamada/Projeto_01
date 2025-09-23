@@ -5,23 +5,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Models\User;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-*/
-
-// Rota para login e registro (públicas)
+// Registro e login público
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-// Rotas protegidas com Sanctum (usuário precisa estar autenticado)
+// Rotas protegidas (usuário logado)
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/me', [AuthController::class, 'me']);
+    Route::get('/me', [AuthController::class, 'me']);      // Dados do usuário logado
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::put('/user', [AuthController::class, 'update']);
-
-    // Exemplo: listar todos os usuários (só para logados)
+    
+    // Listar usuários (apenas logados)
     Route::get('/usuarios', function () {
         return User::all();
     });
