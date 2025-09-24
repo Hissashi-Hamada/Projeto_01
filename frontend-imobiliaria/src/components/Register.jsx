@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { togglePasswordVisibility, evaluatePassword } from '../utils/passwordUtils';
-import { maskDate, maskCPF, maskPhone } from '../utils/masks';
-import '../styles/estilos.css';
+import { evaluatePassword } from '../utils/passwordUtils';
+import { maskCPF, maskPhone, maskDate } from '../utils/masks';
+import '../styles/css/estilos.css';
 
 const Register = () => {
   useEffect(() => {

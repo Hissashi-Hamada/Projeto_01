@@ -4,7 +4,7 @@ import App from './App';
 
 // CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/estilos.css';
+import './styles/css/estilos.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

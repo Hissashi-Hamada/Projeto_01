@@ -1,16 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './components/Register';
-import Login from './components/Login';
+import './styles/css/estilos.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </Router>
+    <div className="container mt-5 p-4" style={{
+      backgroundColor: 'rgba(255,255,255,0.9)',
+      borderRadius: '12px',
+      maxWidth: '500px'
+    }}>
+      <h2>Cadastro</h2>
+      <Register />
+    </div>
   );
 }
 
