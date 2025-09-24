@@ -1,69 +1,54 @@
+/* fundo e base */
 body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url('../../assets/images/bela-arquitetura-edificio-cidade-taipei.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    padding: 1rem;
+  min-height: 100vh;
+  background: url("../../assets/images/bela-arquitetura-edificio-cidade-taipei.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  padding: 1rem;
 }
 
+/* card do formulário */
 .card-register {
-    width: 100%;
-    max-width: 560px;
-    border: 0;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(16,24,40,0.08);
+  margin-inline: 1rem; /* afasta da esquerda e direita */
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(16,24,40,0.12);
 }
 
+/* cabeçalho do card */
 .card-header {
-    background: #572802d7;
-    color: white;
-    padding: 1.25rem 1.5rem;
+  background: #572802d7;
+  color: #fff;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
 }
 
-.form-control:focus {
-    box-shadow: 0 0 0 0.15rem rgba(13,110,253,0.12);
-}
-
+/* botão principal do seu tema */
 .btn-Primary {
-    width: 100%;
-    background-color: #dab291d7; 
-    color: rgb(0, 0, 0); 
-    border: black 2px solid;
+  background-color: #dab291d7;
+  color: #000;
+  border: 2px solid #000;
 }
-
 .btn-Primary:hover {
-    background-color: #572802d7;
-    color: rgb(255, 255, 255);
-    border: black 2px solid;
+  background-color: #572802d7;
+  color: #fff;
+  border: 2px solid #000;
 }
 
-.password-toggle {
-    cursor: pointer;
-    user-select: none;
-}
-
+/* barra de força */
 .strength-bar {
-    height: 8px;
-    border-radius: 6px;
-    overflow: hidden;
-    background: #e9ecef;
+  height: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #e9ecef;
 }
-
 .strength-fill {
-    height: 100%;
-    width: 0%;
-    transition: width 220ms ease;
+  height: 100%;
+  width: 0%;
+  transition: width 220ms ease;
 }
 
-.suggestions {
-    font-size: 0.9rem;
-    color: #495057;
-}
-
-.alert-area {
-    min-height: 58px;
+/* opcional: deixa os labels mais espaçados */
+.form-label {
+  font-weight: 600;
 }
