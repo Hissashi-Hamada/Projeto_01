@@ -1,6 +1,10 @@
 /* fundo e base */
 body {
   min-height: 100vh;
+  padding: 1rem;
+}
+.login-page {
+  min-height: 100vh;
   background: url("../../assets/images/bela-arquitetura-edificio-cidade-taipei.jpg") no-repeat center center fixed;
   background-size: cover;
   padding: 1rem;
@@ -74,4 +78,14 @@ body {
 /* espaço no input para o olho não ficar por cima do texto */
 .with-eye-padding {
   padding-right: 2.5rem;
+}
+/* Centraliza o login na tela */
+.login-container {
+  max-width: 400px;   /* largura máxima */
+  width: 100%;        /* ocupa 100% até o limite do max */
+  margin: 50px auto;  /* centraliza horizontalmente */
+  padding: 20px;      /* espaço interno */
+  background: #fff;   /* fundo branco (ou o que preferir) */
+  border-radius: 10px; /* cantos arredondados */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* leve sombra */
 }
