@@ -43,24 +43,25 @@ const Login = () => {
             />
           </div>
 
-          <div className="mb-3">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              name="password"
-              placeholder="Senha"
-              className="form-control"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="btn btn-sm btn-outline-secondary mt-2"
-            >
-              {showPassword ? 'Ocultar' : 'Mostrar'} Senha
-            </button>
-          </div>
+        <div className="mb-3 input-with-icon">
+          <label className="form-label">Senha</label>
+          <input
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            placeholder="Digite sua senha"
+            className="form-control with-eye-padding"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <span
+            className="password-eye"
+            onClick={() => setShowPassword(!showPassword)}
+            aria-label="Mostrar/ocultar senha"
+          >
+            <i className={showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"}></i>
+          </span>
+        </div>
 
           <button type="submit" className="btn btn-Primary w-100">
               Entrar

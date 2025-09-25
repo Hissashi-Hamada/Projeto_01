@@ -73,7 +73,7 @@ const Register = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+    <div className="container d-flex justify-content-center align-items-start" style={{ minHeight: '100vh', paddingTop: '48px' }}>
       <div className="card-register p-4 w-100" style={{ maxWidth: 560 }}>
         <h2 className="card-header mb-3">Cadastro</h2>
 
@@ -104,19 +104,27 @@ const Register = () => {
             />
           </div>
 
-          <div className="mb-2">
-            <label className="form-label">Senha</label>
-            <input
-              type={showPass ? 'text' : 'password'}
-              name="password"
-              className="form-control"
-              id="inputPassword"
-              placeholder="Crie uma senha forte"
-              value={form.password}
-              onChange={onChange}
-              required
-            />
-          </div>
+            <div className="mb-2 input-with-icon">
+              <label className="form-label">Senha</label>
+              <input
+                type={showPass ? 'text' : 'password'}
+                name="password"
+                id="inputPassword"
+                className="form-control with-eye-padding"
+                placeholder="Crie uma senha forte"
+                value={form.password}
+                onChange={onChange}
+                required
+              />
+              <span
+                className="password-eye"
+                onClick={() => setShowPass(!showPass)}
+                aria-label="Mostrar/ocultar senha"
+                title={showPass ? 'Ocultar senha' : 'Mostrar senha'}
+              >
+                <i className={showPass ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'} />
+              </span>
+            </div>
 
           {/* Barra de força da senha */}
           <div className="mb-2">
@@ -137,27 +145,21 @@ const Register = () => {
             )}
           </div>
 
-          <div className="mb-3">
-            <label className="form-label">Confirmar senha</label>
-            <input
-              type={showPass ? 'text' : 'password'}
-              name="password_confirmation"
-              id="inputConfirmPassword"
-              className="form-control"
-              placeholder="Repita a senha"
-              value={form.password_confirmation}
-              onChange={onChange}
-              required
-            />
-            <button
-              type="button"
-              className="btn btn-sm btn-outline-secondary mt-2"
-              onClick={() => setShowPass(v => !v)}
-              id="togglePassword"
-            >
-              {showPass ? 'Ocultar senhas' : 'Mostrar senhas'}
-            </button>
-          </div>
+            <div className="mb-3 input-with-icon">
+              <label className="form-label">Confirmar senha</label>
+              <input
+                type={showPass ? 'text' : 'password'}
+                name="password_confirmation"
+                id="inputConfirmPassword"
+                className="form-control with-eye-padding"
+                placeholder="Repita a senha"
+                value={form.password_confirmation}
+                onChange={onChange}
+                required
+              />
+            </div>
+
+
 
           {/* Extras (opcionais pro back agora) */}
           <div className="row g-3 mb-3">

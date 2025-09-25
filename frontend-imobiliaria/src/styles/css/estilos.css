@@ -3,7 +3,6 @@ body {
   min-height: 100vh;
   background: url("../../assets/images/bela-arquitetura-edificio-cidade-taipei.jpg") no-repeat center center fixed;
   background-size: cover;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   padding: 1rem;
 }
 
@@ -21,15 +20,18 @@ body {
   color: #fff;
   padding: 1rem 1.25rem;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* botão principal do seu tema */
-.btn-Primary {
+.btn.btn-Primary {
   background-color: #dab291d7;
   color: #000;
   border: 2px solid #000;
 }
-.btn-Primary:hover {
+.btn.btn-Primary:hover {
   background-color: #572802d7;
   color: #fff;
   border: 2px solid #000;
@@ -51,4 +53,25 @@ body {
 /* opcional: deixa os labels mais espaçados */
 .form-label {
   font-weight: 600;
+}
+
+/* wrapper do input para posicionar ícone */
+.input-with-icon {
+  position: relative;
+}
+
+/* ícone do olho alinhado dentro do input */
+.password-eye {
+  position: absolute;
+  top: 70%;                   /* centraliza verticalmente */
+  right: 12px;                 /* distância da borda direita */
+  transform: translateY(-50%); /* garante centralização */
+  cursor: pointer;
+  color: #000000;
+  font-size: 1rem;             /* tamanho do ícone */
+}
+
+/* espaço no input para o olho não ficar por cima do texto */
+.with-eye-padding {
+  padding-right: 2.5rem;
 }

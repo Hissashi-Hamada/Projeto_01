@@ -1,20 +1,5 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "@vitejs/plugin-react": "^5.0.2",
-        "axios": "^1.12.2",
-        "laravel-vite-plugin": "^0.7.8",
-        "vite": "^4.5.14"
-    },
-    "dependencies": {
-        "bootstrap": "^5.3.8",
-        "react": "^19.1.1",
-        "react-dom": "^19.1.1",
-        "react-router-dom": "^7.9.1"
-    },
-    "type": "module"
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.1"
+  }
 }
