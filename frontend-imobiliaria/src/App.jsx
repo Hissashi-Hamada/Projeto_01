@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import HeroSearch from "./components/HeroSearch";
-import Vitrine from "./pages/Vitrine";
-import Footer from "./components/Footer";
+import Header from "./components/Header.jsx";
+import HeroSearch from "./components/HeroSearch.jsx";
+import Vitrine from "./pages/Vitrine.jsx";
+import Footer from "./components/Footer.jsx";
 
 export default function App(){
   return (
@@ -12,7 +12,6 @@ export default function App(){
       <Routes>
         <Route path="/" element={<Vitrine />} />
         <Route path="/vitrine" element={<Vitrine />} />
-        {/* outras páginas */}
       </Routes>
       <Footer />
     </>

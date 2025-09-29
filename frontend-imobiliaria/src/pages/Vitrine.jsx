@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import PropertyCard from "../components/PropertyCard.jsx";
 import FiltersBar from "../components/FiltersBar.jsx";
 import "./vitrine.css";
-import imoveisBase from "../data/imoveis"; // ajuste se for export nomeado
+import imoveisBase from "../data/imoveis.js"; // ajuste se for export nomeado
 
 function useQuery(){
   const { search } = useLocation();
