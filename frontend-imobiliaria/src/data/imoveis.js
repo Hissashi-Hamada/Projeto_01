@@ -1,62 +1,38 @@
-export const IMOVEIS = [
-  {
-    id: 1,
-    tipo: "casa",
-    status: "venda", // venda | aluguel
-    titulo: "Casa 3 quartos com suíte",
-    preco: 350000,
-    cidade: "Umuarama",
-    metragem: 120,
-    quartos: 3,
-    banheiros: 2,
-    imagens: ["/img/casa1.jpg", "/img/casa1-2.jpg", "/img/casa1-3.jpg"],
-  },
-  {
-    id: 2,
-    tipo: "casa",
-    status: "aluguel",
-    titulo: "Casa moderna com área gourmet",
-    preco: 2500, // aluguel/mês
-    cidade: "Douradina",
-    metragem: 140,
-    quartos: 3,
-    banheiros: 3,
-    imagens: ["/img/casa2.jpg", "/img/casa2-2.jpg"],
-  },
-  {
-    id: 3,
-    tipo: "terreno",
-    status: "venda",
-    titulo: "Terreno 300m² bairro central",
-    preco: 95000,
-    cidade: "Douradina",
-    metragem: 300,
-    quartos: 0,
-    banheiros: 0,
-    imagens: ["/img/terreno1.jpg", "/img/terreno1-2.jpg"],
-  },
-  {
-    id: 4,
-    tipo: "terreno",
-    status: "aluguel",
-    titulo: "Terreno 500m² para eventos",
-    preco: 1800, // aluguel/mês
-    cidade: "Umuarama",
-    metragem: 500,
-    quartos: 0,
-    banheiros: 0,
-    imagens: ["/img/terreno2.jpg"],
-  },
-  {
-    id: 5,
-    tipo: "casa",
-    status: "venda",
-    titulo: "Sobrado 4 quartos",
-    preco: 620000,
-    cidade: "Umuarama",
-    metragem: 180,
-    quartos: 4,
-    banheiros: 3,
-    imagens: ["/img/casa3.jpg", "/img/casa3-2.jpg"],
-  },
-];
+import { useMemo, useState } from "react";
+import ImovelCarouselCard from "../components/ImovelCarouselCard";
+import IMOVEIS from "../data/imoveis"; 
+
+export default function VitrineImoveis(){
+  const [busca,setBusca] = useState("");
+
+  const itens = useMemo(()=>{
+    let base = Array.isArray(IMOVEIS)? [...IMOVEIS] : [];
+    if(busca.trim()){
+      const b = busca.toLowerCase();
+      base = base.filter(i => (i.titulo||"").toLowerCase().includes(b) || (i.cidade||"").toLowerCase().includes(b));
+    }
+    return base;
+  },[busca]);
+  
+
+  return (
+    <section>
+      <h2 className="mb-3">Imóveis</h2>
+      <div className="d-flex gap-2 mb-3">
+        <input className="form-control" placeholder="Buscar por título ou cidade..." value={busca} onChange={e=>setBusca(e.target.value)} />
+      </div>
+
+      {itens.length===0 ? (
+        <div className="text-center text-muted py-5 bg-white rounded">Nenhum imóvel encontrado.</div>
+      ):(
+        <div className="row g-3">
+          {itens.map(item=>(
+            <div key={item.id} className="col-12 col-sm-6 col-lg-4">
+              <ImovelCarouselCard item={item}/>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}

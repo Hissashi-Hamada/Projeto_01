@@ -1,9 +1,16 @@
-import "../styles/css/login.css";
+import "../styles/css/auth.css";
 
 export default function Login() {
   return (
-    <div className="login-page d-flex align-items-center">
-      {/* seu formulário aqui */}
+    <div
+      className="auth-page"
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg-login.jpg)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center"
+      }}
+    >
+      <div className="auth-card">{/* ... */}</div>
     </div>
   );
 }

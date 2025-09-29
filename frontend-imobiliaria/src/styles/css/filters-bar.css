@@ -1,0 +1,11 @@
+.filters{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 0;margin:8px 0 16px;border-bottom:1px solid #E2E8F0;
+}
+.filters__right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  height:34px;border-radius:999px;padding:0 14px;border:1px solid #E2E8F0;
+  background:white;font-weight:600;cursor:pointer;
+}
+.chip--active{background:#E0F2FE;border-color:#BAE6FD}

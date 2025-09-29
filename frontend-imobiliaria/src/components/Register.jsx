@@ -3,7 +3,10 @@ import axios from 'axios';
 import { togglePasswordVisibility, evaluatePassword } from '../utils/passwordUtils';
 import { maskDate, maskCPF, maskPhone } from '../utils/masks';
 import '../styles/estilos.css';
-import '../styles/estilos.css';
+import "../styles/css/auth.css";
+
+<div className="auth-page"> ... </div>
+
 
 
 const Register = () => {

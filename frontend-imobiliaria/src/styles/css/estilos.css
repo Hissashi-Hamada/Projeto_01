@@ -5,7 +5,7 @@ body {
 }
 .login-page {
   min-height: 100vh;
-  background: url("../../assets/images/bela-arquitetura-edificio-cidade-taipei.jpg") no-repeat center center fixed;
+  /* background: url("../../assets/images/bela-arquitetura-edificio-cidade-taipei.jpg") no-repeat center center fixed; */
   background-size: cover;
   padding: 1rem;
 }
@@ -89,3 +89,18 @@ body {
   border-radius: 10px; /* cantos arredondados */
   box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* leve sombra */
 }
+
+.prop{
+  background:var(--card-0);border:1px solid #E2E8F0;border-radius:16px;overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:transform .15s ease, box-shadow .15s ease;
+}
+.prop:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.prop__thumb{position:relative;aspect-ratio:16/10;background:#F1F5F9}
+.prop__badges{position:absolute;left:10px;top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.prop__body{padding:12px}
+.prop__title{margin:4px 0;font-size:18px}
+.prop__location{margin:0;color:var(--text-600)}
+.prop__meta{margin:10px 0;display:flex;gap:12px;color:var(--text-600);font-weight:600}
+.prop__footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.prop__price{font-size:20px;font-weight:700;color:var(--brand-700)}
+.prop__period{font-size:14px;color:var(--text-600);margin-left:4px}

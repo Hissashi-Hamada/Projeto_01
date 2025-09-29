@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import { IMOVEIS } from "../data/imoveis";
 import ImovelCarouselCard from "../components/ImovelCarouselCard";
 import ImovelCard from "../components/ImovelCard";
+import IMOVEIS from "../data/imoveis";
 
 
 export default function VitrineImoveis() {
@@ -102,3 +102,4 @@ export default function VitrineImoveis() {
     </section>
   );
 }
+
