@@ -1,0 +1,13 @@
+.footer{
+  margin-top:24px;padding:28px 0;background:#0B1220;color:#E5E7EB;
+}
+.footer__grid{
+  display:grid;gap:18px;grid-template-columns:1.2fr 1fr 1fr;
+}
+.footer a{color:#E5E7EB}
+.brand__logo{font-size:28px}
+.brand__name{margin:0}
+.footer__copy{margin:6px 0 0;color:#94A3B8}
+@media (max-width: 900px){
+  .footer__grid{grid-template-columns:1fr;}
+}
